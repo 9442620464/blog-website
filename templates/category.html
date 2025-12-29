@@ -1,0 +1,42 @@
+{% extends "home.html" %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    {% block content %}
+    <h1>category- {{category.category_name}}</h1>
+    {% if articles %}
+    {% for i in  articles %}
+
+    <div class="col-md-6 blog-main">
+        <div class="blog-post">
+          <h3 class=""><a href="{% url "article" i.slug %}">{{i.title}}</a></h3>
+          <p class="blog-post-meta">{{i.updated_on}} by <a href="">{{i.author}}</a></p>
+
+          <p>{{i.short_description}}</p>
+         
+        </div>
+        
+
+      </div>
+
+      {% endfor %}
+      {% else %}
+        <div class="col-md-12 blog-main">
+            <p>NO ARTICLE ARE AVAILABLE</p>
+
+      {% endif %}
+
+
+    
+    {% endblock content %}
+</body>
+</html>
